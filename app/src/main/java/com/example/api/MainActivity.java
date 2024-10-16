@@ -29,13 +29,14 @@ public class MainActivity extends AppCompatActivity {
         OpenWeatherServices service =
                 RetrofitClientInstance.getRetrofitInstance().create(OpenWeatherServices.
                         class);
-        Call<Forecast> call = service.getForcast();
 
+        Call<Forecast> call = service.getForcast();
         call.enqueue(new Callback<Forecast>() {
             @Override
             public void onResponse(Call<Forecast> call, Response<Forecast>
                     response) {
-                response.body();
+                 Forecast forecast = (Forecast) response.body();
+                 //binding.textView.setText(response.body().getCityName());
             }
             @Override
             public void onFailure(Call<Forecast> call, Throwable t) {

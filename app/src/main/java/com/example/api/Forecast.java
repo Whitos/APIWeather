@@ -14,6 +14,14 @@ public class Forecast implements Serializable {
         this.weather = weather;
         this.datetime = datetime;
     }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public int getDatetime() {
+        return datetime;
+    }
 }
 
 
