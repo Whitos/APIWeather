@@ -19,7 +19,7 @@ public class Forecast implements Serializable {
         return cityName;
     }
 
-    public int getDatetime() {
+    public int getDateTime() {
         return datetime;
     }
 }
