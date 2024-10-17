@@ -6,11 +6,13 @@ public class Forecast implements Serializable {
     @SerializedName("main")
     Weather weather;
     @SerializedName("dt")
-    private int datetime;
+    private String datetime;
     @SerializedName("name")
     private String cityName;
+    @SerializedName("coord")
+    private Coord coord;
 
-    public Forecast(Weather weather, int datetime) {
+    public Forecast(Weather weather, String datetime) {
         this.weather = weather;
         this.datetime = datetime;
     }
@@ -19,8 +21,12 @@ public class Forecast implements Serializable {
         return cityName;
     }
 
-    public int getDateTime() {
+    public String getDateTime() {
         return datetime;
+    }
+
+    public Weather getWeather() {
+        return weather;
     }
 }
 
