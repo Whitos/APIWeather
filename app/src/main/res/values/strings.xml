@@ -5,4 +5,7 @@
     <string name="max">Max°:</string>
     <string name="entrez_le_nom_de_la_ville">Entrez le nom de la ville</string>
     <string name="rechercher">Rechercher</string>
+    <string name="textviewmax">TextViewMax</string>
+    <string name="textviewmin">TextViewMin</string>
+    <string name="textviewnamecity">TextViewNameCity</string>
 </resources>
