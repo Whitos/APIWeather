@@ -26,18 +26,19 @@
         android:layout_height="41dp"
         android:layout_marginTop="40dp"
         android:background="#FFFFFF"
+        android:contentDescription="@string/todo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.271"
         app:layout_constraintStart_toEndOf="@+id/editTextNameCity"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_search" />
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="202dp"
         android:layout_height="123dp"
         android:layout_marginTop="4dp"
+        android:contentDescription="@string/todo2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,15 +46,15 @@
         app:srcCompat="@drawable/img" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewForecasts"
+        android:id="@+id/activityRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="48dp"
         android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTemperature">
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemperature" />
 
     <TextView
         android:id="@+id/textViewTemperature"
@@ -65,8 +66,5 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

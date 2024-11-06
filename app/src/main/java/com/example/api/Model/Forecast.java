@@ -1,6 +1,7 @@
 package com.example.api.Model;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
+import java.util.List;
 
 public class Forecast implements Serializable {
     @SerializedName("main")
@@ -28,6 +29,7 @@ public class Forecast implements Serializable {
     public Weather getWeather() {
         return weather;
     }
+
 }
 
 

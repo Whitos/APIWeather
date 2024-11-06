@@ -1,6 +1,8 @@
 package com.example.api.Model;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
 public class Weather implements Serializable {
     @SerializedName("temp")
@@ -15,6 +17,12 @@ public class Weather implements Serializable {
     private double pressure;
     @SerializedName("humidity")
     private double humidity;
+    @SerializedName("weather")
+    private List<WeatherDescription> weatherDescriptions;
+
+    public Weather(List<WeatherDescription> weatherDescriptions) {
+        this.weatherDescriptions = weatherDescriptions;
+    }
 
 
     public double getTemp() {
@@ -32,4 +40,12 @@ public class Weather implements Serializable {
     public double getTempMax() {
         return tempMax;
     }
+
+    public String getDescription() {
+        if (weatherDescriptions != null && !weatherDescriptions.isEmpty()) {
+            return weatherDescriptions.get(0).getDescription();
+        }
+        return null;
+    }
+
 }

@@ -8,4 +8,8 @@
     <string name="textviewmax">TextViewMax</string>
     <string name="textviewmin">TextViewMin</string>
     <string name="textviewnamecity">TextViewNameCity</string>
+    <string name="activity_image" />
+    <string name="todo">TODO</string>
+    <string name="todo2">TODO</string>
+    <string name="activity_image_desc" />
 </resources>
