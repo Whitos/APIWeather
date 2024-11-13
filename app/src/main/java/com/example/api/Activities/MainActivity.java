@@ -1,8 +1,10 @@
 package com.example.api.Activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,13 +20,19 @@ import com.example.api.Network.RetrofitClientInstance;
 import com.example.api.R;
 import com.example.api.databinding.ActivityMainBinding;
 
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import android.content.Intent;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
             String cityName = binding.editTextNameCity.getText().toString().trim();
             if (!cityName.isEmpty()) {
                 searchWeatherByCity(service, cityName, apiKey);
+
+                // Masquer le clavier après la recherche
+                hideKeyboard();
             } else {
                 Toast.makeText(MainActivity.this, "Veuillez entrer un nom de ville", Toast.LENGTH_SHORT).show();
             }
@@ -54,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
                 String cityName = binding.editTextNameCity.getText().toString().trim();
                 if (!cityName.isEmpty()) {
                     searchWeatherByCity(service, cityName, apiKey);
+
+                    // Masquer le clavier après la recherche
+                    hideKeyboard();
                 } else {
                     Toast.makeText(MainActivity.this, "Veuillez entrer un nom de ville", Toast.LENGTH_SHORT).show();
                 }
@@ -61,6 +75,13 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
+    }
+
+    private void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(binding.editTextNameCity.getWindowToken(), 0);
+        }
     }
 
     private List<Suggestion> getActivitySuggestions(Weather weather) {
@@ -126,6 +147,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                     binding.editTextNameCity.setText(forecast.getCityName());
                     binding.textViewTemperature.setText(String.format(Locale.getDefault(), "%.0f°C", weather.getTemp() - 273.15));
+                    binding.textViewMin.setText(String.format(Locale.getDefault(), "Min: %.0f°C", weather.getTempMin() - 273.15));
+                    binding.textViewMax.setText(String.format(Locale.getDefault(), "Max: %.0f°C", weather.getTempMax() - 273.15));
 
                     List<Suggestion> activitySuggestions = getActivitySuggestions(weather);
                     Log.d("ActivitySuggestions", "Suggestions size: " + activitySuggestions.size());
@@ -138,13 +161,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
+            private void openPlaceDetailActivity(String placeName, String placeAddress, String placeDescription) {
+                Intent intent = new Intent(MainActivity.this, PlaceDetailActivity.class);
+                intent.putExtra("place_name", placeName);
+                intent.putExtra("place_address", placeAddress);
+                intent.putExtra("place_description", placeDescription);
+                startActivity(intent);
+            }
+
             @Override
             public void onFailure(Call<Forecast> call, Throwable t) {
                 // En cas d'erreur réseau ou d'échec de l'appel API
                 Toast.makeText(MainActivity.this, "Une erreur est survenue", Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 }

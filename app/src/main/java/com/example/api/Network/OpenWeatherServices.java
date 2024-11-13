@@ -19,3 +19,4 @@ public interface OpenWeatherServices {
             @Query("appid") String apiKey
     );
 }
+

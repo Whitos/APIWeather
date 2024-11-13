@@ -12,4 +12,12 @@
     <string name="todo">TODO</string>
     <string name="todo2">TODO</string>
     <string name="activity_image_desc" />
+    <string name="nom_du_lieu">Nom du lieu</string>
+    <string name="adresse_du_lieu">Adresse du lieu</string>
+    <string name="description_du_lieu">Description du lieu</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="description">Description</string>
+    <string name="adresse">Adresse</string>
+    <string name="ic_ne_de_l_activit">Icône de l\'activité</string>
+    <string name="retour">Retour</string>
 </resources>
