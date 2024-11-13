@@ -1,10 +1,12 @@
 package com.example.api.Activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
-
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.api.R;
 import com.example.api.databinding.ActivityPlaceDetailBinding;
 
@@ -36,6 +38,19 @@ public class PlaceDetailActivity extends AppCompatActivity {
         binding.textViewPlaceName.setText(placeName);
         binding.textViewPlaceAddress.setText(placeAddress);
         binding.textViewPlaceDescription.setText(placeDescription);
+
+        // Configurer le lien Maps
+        TextView mapsLink = findViewById(R.id.textViewMapsLink);
+
+        if (!placeAddress.equals("À votre domicile")) {
+            mapsLink.setOnClickListener(v -> {
+                String url = "https://www.google.com/maps/search/" + Uri.encode(placeAddress);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            });
+        } else {
+            mapsLink.setVisibility(View.GONE); // Cache le lien si c'est "Sport a la maison"
+        }
     }
 
     private int getIconResourceForActivity(String activityName) {

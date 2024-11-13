@@ -90,6 +90,19 @@
                         android:layout_marginTop="8dp"
                         android:textColor="@android:color/black"
                         android:textSize="16sp" />
+
+                    <!-- Lien Maps -->
+                    <TextView
+                        android:id="@+id/textViewMapsLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/voir_sur_google_maps"
+                        android:textColor="@android:color/holo_blue_dark"
+                        android:textStyle="bold"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp" />
                 </LinearLayout>
 
                 <!-- Section Description -->
