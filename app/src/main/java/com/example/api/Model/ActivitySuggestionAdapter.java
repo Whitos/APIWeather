@@ -63,6 +63,8 @@ public class ActivitySuggestionAdapter extends RecyclerView.Adapter<ActivitySugg
         parisAddresses.put("Café", "Place Saint-Germain-des-Prés, 75006 Paris");
         parisAddresses.put("Pique-nique", "Parc Monceau, 75008 Paris");
         parisAddresses.put("Piscine", "39 Rue de Pontoise, 75005 Paris");
+        parisAddresses.put("Sport a la maison", "À votre domicile");
+        parisAddresses.put("Lecture", "5 Rue Vivienne, 75002 Paris");
         cityAddresses.put("Paris", parisAddresses);
 
         Map<String, String> parisDescriptions = new HashMap<>();
@@ -93,7 +95,7 @@ public class ActivitySuggestionAdapter extends RecyclerView.Adapter<ActivitySugg
         holder.activityDescription.setText(suggestion.getActivityDescription());
         holder.activityIcon.setImageResource(suggestion.getActivityImageRes());
 
-        String address = activityAddresses.get(suggestion.getActivityName());
+        String address = cityAddresses.get(selectedCity).get(suggestion.getActivityName());
 
         // Gérer le clic court pour ouvrir les détails
         holder.itemView.setOnClickListener(v -> {
