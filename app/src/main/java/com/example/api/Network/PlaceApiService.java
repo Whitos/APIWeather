@@ -5,7 +5,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface PlaceApiService {
-    @GET("place/search") // Remplacez l'URL par celle correspondant à votre API
+    @GET("place/search")
     Call<PlaceResponse> getPlaceDetails(
             @Query("city") String city,
             @Query("apiKey") String apiKey
