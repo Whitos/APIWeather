@@ -9,15 +9,15 @@
     android:background="@drawable/weather_gradient"
     tools:context=".Activities.MainActivity">
 
-    <!-- Card pour la recherche -->
+    <!-- SearchCard: Ajout d'un StateListAnimator pour un effet d'élévation au touch -->
     <androidx.cardview.widget.CardView
         android:id="@+id/searchCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="15dp"
+        android:stateListAnimator="@animator/card_lift"
+        app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="8dp">
+            android:padding="12dp">
 
             <EditText
                 android:id="@+id/editTextNameCity"
@@ -37,30 +37,31 @@
                 android:background="@null"
                 android:hint="@string/entrez_le_nom_de_la_ville"
                 android:inputType="text"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textSize="20sp" />
+                android:imeOptions="actionSearch"
+                android:maxLines="1"
+                android:paddingHorizontal="16dp"
+                android:textSize="18sp" />
 
             <ImageButton
                 android:id="@+id/imageViewSearch"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/todo"
+                android:contentDescription="@string/search_button_description"
                 android:src="@drawable/ic_search"
                 app:tint="@color/colorPrimary" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Card pour les informations météo -->
+    <!-- WeatherCard: Ajout d'une animation de transition et amélioration de l'accessibilité -->
     <androidx.cardview.widget.CardView
         android:id="@+id/weatherCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="15dp"
+        android:transitionName="weatherTransition"
+        app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,11 +74,12 @@
             android:padding="16dp">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/weatherIcon"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center"
-                android:contentDescription="@string/todo2"
+                android:contentDescription="@string/weather_icon_description"
+                android:transitionName="weatherIconTransition"
                 app:srcCompat="@drawable/img" />
 
             <TextView
@@ -85,15 +87,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:textSize="36sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:accessibilityLiveRegion="polite" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:gravity="center"
+                android:baselineAligned="false"
                 android:orientation="horizontal">
 
                 <TextView
@@ -103,7 +107,8 @@
                     android:layout_marginEnd="24dp"
                     android:drawableStart="@drawable/ic_arrow_down"
                     android:drawablePadding="4dp"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:importantForAccessibility="yes" />
 
                 <TextView
                     android:id="@+id/textViewMax"
@@ -112,7 +117,8 @@
                     android:layout_marginStart="24dp"
                     android:drawableStart="@drawable/ic_arrow_up"
                     android:drawablePadding="4dp"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:importantForAccessibility="yes" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -122,10 +128,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Activités suggérées"
-        android:textSize="28sp"
+        android:layout_marginTop="24dp"
+        android:text="@string/activit_s_sugg_r_es"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
         android:textStyle="bold"
+        android:accessibilityHeading="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/weatherCard" />
 
@@ -133,9 +141,11 @@
         android:id="@+id/activityRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:clipToPadding="false"
         android:padding="8dp"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSuggestions" />
 

@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#59ABE3</color>
-    <color name="colorPrimaryDark">#2E86C1</color>
-    <color name="colorAccent">#FF5722</color>
-    <color name="textColorPrimary">#212121</color>
-    <color name="textColorSecondary">#FFFFFF</color>
-    <color name="dividerColor">#BDBDBD</color>
+    <!-- Palette de couleurs Material Design -->
+    <!-- Couleurs principales -->
+    <color name="colorPrimary">#1976D2</color>        <!-- Bleu Material Design -->
+    <color name="colorPrimaryDark">#1565C0</color>    <!-- Version plus sombre pour status bar -->
+    <color name="colorPrimaryLight">#42A5F5</color>   <!-- Version plus claire pour accents -->
+    <color name="colorAccent">#FF4081</color>         <!-- Rose vif pour contraste -->
+
+    <!-- Couleurs de texte -->
+    <color name="textColorPrimary">#212121</color>    <!-- Noir 87% pour texte principal -->
+    <color name="textColorSecondary">#757575</color>  <!-- Gris pour texte secondaire -->
+    <color name="textColorLight">#FFFFFF</color>      <!-- Blanc pour texte sur fond sombre -->
+
+    <!-- Couleurs utilitaires -->
+    <color name="dividerColor">#EEEEEE</color>        <!-- Gris très clair pour séparateurs -->
+    <color name="backgroundLight">#FAFAFA</color>     <!-- Gris presque blanc pour fond -->
+    <color name="surfaceColor">#FFFFFF</color>        <!-- Blanc pur pour surfaces -->
+
+    <!-- État des éléments -->
+    <color name="rippleColor">#1F000000</color>       <!-- Noir 12% pour effet ripple -->
+    <color name="disabledColor">#61000000</color>     <!-- Noir 38% pour éléments désactivés -->
 </resources>

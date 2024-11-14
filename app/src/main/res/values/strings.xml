@@ -20,4 +20,17 @@
     <string name="adresse">Adresse</string>
     <string name="ic_ne_de_l_activit">Icône de l\'activité</string>
     <string name="retour">Retour</string>
+    <string name="voir_sur_google_maps">Voir sur Google Maps</string>
+    <string name="activit_s_sugg_r_es">Activités suggérées</string>
+    <string name="activities_suggested" />
+    <string name="activity_description" />
+    <string name="activity_name" />
+    <string name="weather_icon_description" />
+    <string name="search_button_description" />
+    <string name="more_options" />
+    <string name="reserver" />
+    <string name="icon_info" />
+    <string name="activity_icon" />
+    <string name="activity_details" />
+    <string name="icon_location" />
 </resources>

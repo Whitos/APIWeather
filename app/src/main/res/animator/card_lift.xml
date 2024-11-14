@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Quand la carte est pressée -->
+    <item android:state_pressed="true">
+        <set>
+            <objectAnimator
+                android:propertyName="translationZ"
+                android:duration="100"
+                android:valueTo="8dp"
+                android:valueType="floatType"
+                android:interpolator="@android:interpolator/fast_out_slow_in"/>
+            <objectAnimator
+                android:propertyName="elevation"
+                android:duration="100"
+                android:valueTo="8dp"
+                android:valueType="floatType"
+                android:interpolator="@android:interpolator/fast_out_slow_in"/>
+        </set>
+    </item>
+
+    <!-- État par défaut/relâché -->
+    <item>
+        <set>
+            <objectAnimator
+                android:propertyName="translationZ"
+                android:duration="100"
+                android:valueTo="0dp"
+                android:valueType="floatType"
+                android:interpolator="@android:interpolator/fast_out_slow_in"/>
+            <objectAnimator
+                android:propertyName="elevation"
+                android:duration="100"
+                android:valueTo="4dp"
+                android:valueType="floatType"
+                android:interpolator="@android:interpolator/fast_out_slow_in"/>
+        </set>
+    </item>
+</selector>

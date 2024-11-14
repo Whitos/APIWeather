@@ -1,10 +1,10 @@
 package com.example.api.Activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.widget.ImageButton;
-
+import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.api.R;
 import com.example.api.databinding.ActivityPlaceDetailBinding;
 
@@ -18,9 +18,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
         binding = ActivityPlaceDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Configurer le bouton retour
-        ImageButton backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(v -> finish());
+        // Configurer le bouton retour dans la Toolbar
+        binding.toolbar.setNavigationOnClickListener(v -> finish());
 
         // Récupérer les données de l'intent
         String placeName = getIntent().getStringExtra("place_name");
@@ -28,7 +27,6 @@ public class PlaceDetailActivity extends AppCompatActivity {
         String placeDescription = getIntent().getStringExtra("place_description");
 
         // Définir l'icône en fonction de l'activité
-        assert placeName != null;
         int iconResource = getIconResourceForActivity(placeName);
         binding.activityIcon.setImageResource(iconResource);
 
@@ -36,6 +34,17 @@ public class PlaceDetailActivity extends AppCompatActivity {
         binding.textViewPlaceName.setText(placeName);
         binding.textViewPlaceAddress.setText(placeAddress);
         binding.textViewPlaceDescription.setText(placeDescription);
+
+        // Configurer le lien Maps
+        if (!"À votre domicile".equals(placeAddress)) {
+            binding.buttonOpenMaps.setOnClickListener(v -> {
+                String url = "https://www.google.com/maps/search/" + Uri.encode(placeAddress);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            });
+        } else {
+            binding.buttonOpenMaps.setVisibility(View.GONE); // Cache le bouton si c'est "Sport a la maison"
+        }
     }
 
     private int getIconResourceForActivity(String activityName) {

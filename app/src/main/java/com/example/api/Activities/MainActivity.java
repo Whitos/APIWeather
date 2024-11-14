@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                     List<Suggestion> activitySuggestions = getActivitySuggestions(weather);
                     Log.d("ActivitySuggestions", "Suggestions size: " + activitySuggestions.size());
 
-                    ActivitySuggestionAdapter adapter = new ActivitySuggestionAdapter(activitySuggestions);
+                    ActivitySuggestionAdapter adapter = new ActivitySuggestionAdapter(activitySuggestions, cityName);
                     binding.activityRecyclerView.setAdapter(adapter);
 
                 } else {
