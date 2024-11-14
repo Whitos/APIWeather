@@ -1,6 +1,7 @@
 package com.example.api.Model;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +93,9 @@ public class ActivitySuggestionAdapter extends RecyclerView.Adapter<ActivitySugg
         holder.activityDescription.setText(suggestion.getActivityDescription());
         holder.activityIcon.setImageResource(suggestion.getActivityImageRes());
 
-        // Gérer le clic sur l'élément
+        String address = activityAddresses.get(suggestion.getActivityName());
+
+        // Gérer le clic court pour ouvrir les détails
         holder.itemView.setOnClickListener(v -> {
             String title = suggestion.getActivityName();
 
@@ -109,6 +112,17 @@ public class ActivitySuggestionAdapter extends RecyclerView.Adapter<ActivitySugg
             intent.putExtra("place_address", detailedAddress);
             intent.putExtra("place_description", detailedDescription);
             v.getContext().startActivity(intent);
+        });
+
+        // Gérer le clic long pour ouvrir Google Maps dans le navigateur
+        holder.itemView.setOnLongClickListener(v -> {
+            if (address != null && !address.equals("À votre domicile")) {
+                String url = "https://www.google.com/maps/search/" + Uri.encode(address);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                v.getContext().startActivity(intent);
+                return true;
+            }
+            return false;
         });
     }
 
